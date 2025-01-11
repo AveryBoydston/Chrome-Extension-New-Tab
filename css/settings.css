@@ -1,0 +1,10 @@
+.settings{
+    position: absolute;
+    height: 1000px;
+    width: 400px;
+    left: 0;
+    top: 0;
+    
+    background-color: blueviolet;
+    z-index: 100;
+}
