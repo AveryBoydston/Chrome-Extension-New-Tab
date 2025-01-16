@@ -1,10 +1,12 @@
-export function updateClock(clockElement) {
+export function updateClock(clockElement, bool) {
   const now = new Date();
-  const timeString = now.toLocaleTimeString([], {
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false
-  });
-  clockElement.textContent = `${timeString}`;
+  let hours = now.getHours();
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+  if (bool) {
+    hours = hours % 12 || 12; // Converts to 12-hour format
+  }
+  
+  const timeString = `${hours}:${minutes}:${seconds}`;
+  clockElement.textContent = timeString;
 }

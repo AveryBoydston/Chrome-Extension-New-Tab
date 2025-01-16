@@ -1,10 +1,68 @@
 .settings{
     position: absolute;
-    height: 1000px;
+    height: 100vh;
     width: 400px;
-    left: 0;
+    right: -400px;
     top: 0;
+    color: #fff;
+    background-color: rgba(84, 83, 83, 0.654);
+    border-radius: 20px;
+    padding: 10px 10px;
+    justify-items: center;
+    transition: right 0.3s ease-in-out;
+    overflow-y: auto;
+
+    z-index: 9999;
+}
+.settings.hidden{
+    right: -400px;
+    display: block;
+}
+.settings.slide-in {
+    display: block;
+    visibility: visible;
+    right: 0; 
+  }
+
+.settings h1{
+    text-align: center;
+
+    font-size: 4vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    color: #ffffff;
+    z-index: 6;
+
+    /* underline */
+    border-bottom: 1px solid #ccc;
+    line-height: 50px;
+    width: 100%;
+}
+
+.settings-tabs{
+    display: flex; 
+    border-color: #ccc;
+    border-radius: 20px;
+    border-width: 1px;
+}
+.settings-tabs button{
+    all: unset;
+    margin: 0px 6px;
+    border: 1.5px solid white;
+    border-radius: 5px;
+    padding: 3px 5px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+    transform-origin: center;
     
-    background-color: blueviolet;
-    z-index: 100;
+}
+.settings-tabs button:hover{
+    transform: scale(1.051); /* Scale to 105% */
+}
+
+
+
+.tabcontent{
+    padding: 0px 5px;
+    width: 100%;
 }

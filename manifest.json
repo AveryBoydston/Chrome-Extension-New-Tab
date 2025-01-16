@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "New Tab",
+    "version": "1.0",
+    "permissions": ["activeTab", "tabs"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["script.js"],
+            "type": "module"
+        }
+    ],
+    "chrome_url_overrides":{ 
+        "newtab": "index.html"
+    },
+    "action": {
+        "default_popup": "index.html",
+        "default_icon": {
+        }
+    }
+}

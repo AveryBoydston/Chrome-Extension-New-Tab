@@ -1,24 +1,22 @@
-$color: #fff;
-
 .search {
     display: table;
     input {
         background: none;
         border: none;
         outline: none;
-        width: 28px;
+        width: 390px;
         min-width: 0;
         padding: 0;
         z-index: 1;
         position: relative;
         line-height: 18px;
-        margin: 5px 0;
+        margin: 10px 0;
         font-size: 14px;
         -webkit-appearance: none;
         font-family: 'Mukta Malar';
         transition: all .6s ease;
         cursor: pointer;
-        color: $color;
+        color: #fff;
         & + div {
             position: relative;
             height: 28px;
@@ -30,9 +28,9 @@ $color: #fff;
                 height: 28px;
                 width: 160px;
                 right: 0;
-                top: 0;
+                top: -5px;
                 fill: none;
-                stroke: $color;
+                stroke: #fff;
                 stroke-width: 1.5px;
                 stroke-dashoffset: 212.908 + 59;
                 stroke-dasharray: 59 212.908;
@@ -41,17 +39,26 @@ $color: #fff;
         }
         &:not(:placeholder-shown),
         &:hover {
-            width: 160px;
+            width: 400px;
             padding: 0 4px;
             cursor: text;
-            &+ div {
+            /* &+ div {
                 svg {
-                    stroke-dasharray: 150 212.908;
+                    stroke-dasharray:390 212.908;
                     stroke-dashoffset: 300;
                 }
-            }
+            } */
         }
     }
+}
+#invisible-search-button{
+    position: absolute;
+    top: -10px;
+    right: 0px;
+    height: 40px;
+    width: 40px;
+    background-color: rgb(0, 255, 255,0);
+    z-index: 99;
 }
 
 ::selection {
@@ -74,11 +81,10 @@ html {
     }
 }
 
-// Center & dribbble
 body {
     min-height: 100vh;
     font-family: 'Mukta Malar', Arial;
-    background: #F3628D;
+    background: #000;
     display: flex;
     justify-content: center;
     align-items: center;

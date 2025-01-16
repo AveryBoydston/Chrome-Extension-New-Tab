@@ -8,29 +8,82 @@
     <link rel="stylesheet" href="./css/tasks.css">
     <link rel="stylesheet" href="./css/searchbar.css">
     <link rel="stylesheet" href="./css/background.css">
+    <link rel="stylesheet" href="./css/hyperlinks.css">
+    <link rel="stylesheet" href="./css/settings.css">
 </head>
 
 <body>
+    <button class="widget drag" id="toggleDrag">🔒</button>
+    <button class="widget drag" id="toggleSettings">⚙️</button>
+
     <!-- background -->
     <div class="background">
         <video autoplay loop muted src="./assets/river1.mp4"></video>            
     </div>
-    
-    <!-- settings menu -->
-    <div class="settings">
 
+    <!-- settings menu -->
+    <div class="settings hidden">
+        <h1>Settings</h1>
+        <div class="settings-tabs">
+            <button id="tab" class="active">Appearance</button>
+            <button id="tab">Placeholder</button>
+            <button id="tab">Account</button>
+        </div>
+
+        <div id="Appearance" class="tabcontent" style="display: block;">
+            <h3>Appearance</h3>
+            <p>Light/Dark mode</p>
+            <p>12/24 Hour clock</p>
+            <div>
+                <p>hyperlinks</p>
+
+            </div>
+            <p>Widget size</p>
+            <div>
+                <p>toggle widgets</p>
+
+            </div>
+            <p>Wallpaper</p>
+            <p>Theme color</p>
+            <p>Dim Wallpaper</p>
+            <p>Blur wallpaper</p>
+            <p>Reset Appearance</p>
+        </div>
+
+        <div id="Placeholder" class="tabcontent" style="display: none;">
+            <h3>#</h3>
+            <p>Settings related to the placeholder.</p>
+        </div> 
+
+        <div id="Account" class="tabcontent" style="display: none;">
+            <h2>Account</h2>
+            <h1>Sign in / Create account</h1>
+            <p>Autosave Preferences</p>
+            <p>Save Now</p>
+            <p>Retrieve Preferences</p>
+            <p>Support</p>
+            <p>Rate 5 stars</p>
+            <p>Give Feedback</p>
+            <h2>About</h2>
+            <p>v1.0</p>
+            <p>About us</p>
+            <p>Contact us</p>
+            <p>Privacy Policy</p>
+            <p>Data Policy</p>
+            <p>Terms of Use</p>
+        </div>
     </div>
 
-    <button class="widget drag" id="toggleDrag">Disabled</button>
+
     <!-- Clock -->
-    <div class="clock widget drag" id="test1"></div>
+    <div class="clock widget drag 12-hour" id="clockid"></div>
 
 
     <!-- tasks widget-->
-    <div class="tasks widget drag" id="test2">
-        <h2 class="task-header"></h2>
+    <div class="tasks widget drag" id="tasksid">
+        <!-- <h2 class="task-header"></h2> -->
         <ul>
-            <li style="color: #ffffff">Get the day started!!! <input type="checkbox">  <span class="checkmark-box"></span> <span class="checkmark draw hidden"> </span></li>
+            <!-- <li style="color: #ffffff">Get the day started!!! <input type="checkbox">  <span class="checkmark-box"></span> <span class="checkmark draw hidden"> </span></li> -->
             <li style="color: #ffffff">... <input type="checkbox"> <span class="checkmark-box"></span> <span class=" checkmark draw hidden"></span></li>
 
         </ul>
@@ -39,30 +92,37 @@
         <span> <img class="addBtn" src="assets/plus.png" alt="add plus button"> </span>
     </div>
 
+
     <!-- search bar -->
-    <div class="search widget">
-        <input type="text" placeholder=" ">
-        <div>
+    <div class="search widget" id="searchid">
+        <input type="text" id="searchInput" placeholder="">
+        <div> <!-- search icon -->
             <svg>
                 <use xlink:href="#path">
             </svg>
+            <div id="invisible-search-button"></div>
         </div>
     </div>
-        
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none; ">
         <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 28" id="path">
             <path d="M32.9418651,-20.6880772 C37.9418651,-20.6880772 40.9418651,-16.6880772 40.9418651,-12.6880772 C40.9418651,-8.68807717 37.9418651,-4.68807717 32.9418651,-4.68807717 C27.9418651,-4.68807717 24.9418651,-8.68807717 24.9418651,-12.6880772 C24.9418651,-16.6880772 27.9418651,-20.6880772 32.9418651,-20.6880772 L32.9418651,-29.870624 C32.9418651,-30.3676803 33.3448089,-30.770624 33.8418651,-30.770624 C34.08056,-30.770624 34.3094785,-30.6758029 34.4782612,-30.5070201 L141.371843,76.386562" transform="translate(83.156854, 22.171573) rotate(-225.000000) translate(-83.156854, -22.171573)"></path>
         </symbol>
     </svg>
-
-    <!-- search bar dribble -->
+    <!-- dribbble -->
     <a class="dribbble" href="https://dribbble.com/shots/5547403-Search-input-animation" target="_blank"><img src="https://dribbble.com/assets/logo-small-2x-9fe74d2ad7b25fba0f50168523c15fda4c35534f9ea0b1011179275383035439.png" alt=""></a>
-
     
+    <!-- hyperlinks -->
+     <div class="hyperlinks widget drag" id="hyperlinksID">
+        <ul>
+            <li><img src="https://youtube.com/favicon.ico" alt="Youtube"></li>
+            <li><img src="https://youtube.com/favicon.ico" alt="Youtube"></li>
+            <li><img src="https://youtube.com/favicon.ico" alt="Youtube"></li>
+            <li><img src="https://youtube.com/favicon.ico" alt="Youtube"></li>
+        </ul>
+     </div>
 
 
-
-
+     
 
 
 

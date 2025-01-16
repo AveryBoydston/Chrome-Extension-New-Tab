@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   //random Tasks Message
-  let task_message = document.querySelector('.task-header')
+  let task_message = document.querySelector('.task-message')
   function getRandom_Task_Message() {
     let tasks_messages = ["I am currently", "My plan for today", "Today I will", "Today's goals"]
     task_message.innerHTML = tasks_messages[Math.floor(Math.random() * tasks_messages.length)] + ":";
