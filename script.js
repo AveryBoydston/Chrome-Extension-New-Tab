@@ -2,6 +2,7 @@ import * as tasks from './js/tasks.js';
 import * as clock from './js/clock.js';
 import * as searchbar from './js/searchbar.js';
 import * as settings from './js/settings.js';
+import * as authmodal from './authentication/authmodal.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     const widgets = document.querySelectorAll('.widget');
@@ -174,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("searchInput").addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
             searchbar.search();
-        }
+        }req.body
     });
 
     document.querySelectorAll("#tab").forEach(tab => {
@@ -182,5 +183,100 @@ document.addEventListener('DOMContentLoaded', () => {
             settings.openTab(event, tab);
         })
     })
-    
 });
+
+
+export function getWidgetPositions() {
+    const widgets = document.querySelectorAll('.widget'); // Select draggable widgets
+
+    const positions = {};
+    widgets.forEach(widget => {
+        positions[widget.id] = { // Use widget id as key
+            top: widget.style.top,
+            left: widget.style.left
+        };
+    });
+    console.log(positions)
+    return positions;
+}
+
+export function getTasks() {
+    const taskItems = document.querySelectorAll('#tasksid ul li'); // Select task list items
+    const tasks = [];
+    taskItems.forEach(item => {
+        const text = item.textContent.trim(); // Get task text
+        const checked = item.querySelector('input[type="checkbox"]').checked; // Checkbox state
+        tasks.push({ text: text, checked: checked });
+    });
+    console.log(tasks)
+    return tasks;
+}
+
+ export function setWidgetPositions(widgetPositions) {
+    if (!widgetPositions) return; // base case no saved positions
+
+    Object.keys(widgetPositions).forEach(widgetId => {
+        const widget = document.getElementById(widgetId);
+        if (widget) {
+            widget.style.top = widgetPositions[widgetId].top;
+            widget.style.left = widgetPositions[widgetId].left;
+
+            // Save the widget's position in localStorage
+            const position = {
+                top: widget.getBoundingClientRect().top,
+                left: widget.getBoundingClientRect().left
+            };
+            localStorage.setItem(widget.id + 'Position', JSON.stringify(position));
+            
+        }
+    });
+    
+}
+
+
+// ???????????????????????????
+export function setTasks(tasksData) {
+    if (!tasksData) return; // Handle case of no saved tasks
+
+    const taskListUl = document.querySelector('#tasksid ul');
+    taskListUl.innerHTML = ''; // Clear existing tasks
+
+    tasksData.forEach(task => {
+        const li = document.createElement('li');
+        li.style.color = '#ffffff'; // Set your task item color
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = task.checked;
+
+        const checkmarkBoxSpan = document.createElement('span');
+        checkmarkBoxSpan.className = 'checkmark-box';
+
+        const checkmarkDrawSpan = document.createElement('span');
+        checkmarkDrawSpan.className = 'checkmark draw hidden';
+
+        li.textContent = task.text + ' '; // Add text content
+        li.appendChild(checkbox);
+        li.appendChild(checkmarkBoxSpan);
+        li.appendChild(checkmarkDrawSpan);
+
+        taskListUl.appendChild(li);
+    });
+     // Re-attach event listeners to newly created task list (if needed for your task functionality)
+    attachTaskEventListeners(); // You may need to re-implement this function based on your task event handling logic
+
+}
+
+export  function attachTaskEventListeners() {
+    // Implement your task event listener attachment logic here
+    // Example: for checkbox changes, task deletion, etc.
+    // This is a placeholder, you'll need to adapt it based on your task list interactions.
+    console.log("Placeholder for attachTaskEventListeners() - Implement your task event logic here!");
+}
+// ???????????????????????????
+
+export function saveTasksToLocalStorage() {
+    const tasks = getTasks(); // Get current tasks from the UI using your getTasks() function
+    localStorage.setItem('tasksData', JSON.stringify(tasks)); // Save tasks to localStorage as JSON string
+    console.log("Tasks saved to localStorage."); // Optional: confirmation log
+}

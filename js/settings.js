@@ -16,3 +16,6 @@ export function openTab(event, tabName) {
     document.getElementById(tabName.textContent).style.display = "block"; //id same as innertext of tab
     event.currentTarget.className += " active";
 }
+
+
+

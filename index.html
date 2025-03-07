@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Page</title>
+    <title>New Tab</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="./css/tasks.css">
     <link rel="stylesheet" href="./css/searchbar.css">
     <link rel="stylesheet" href="./css/background.css">
     <link rel="stylesheet" href="./css/hyperlinks.css">
     <link rel="stylesheet" href="./css/settings.css">
+    <link rel="stylesheet" href="./css/authmodal.css">
 </head>
 
 <body>
@@ -18,8 +19,14 @@
 
     <!-- background -->
     <div class="background">
-        <video autoplay loop muted src="./assets/river1.mp4"></video>            
+        <video class="current_background" autoplay loop muted src="./assets/backgrounds/river1.mp4"></video>            
     </div>
+    <!-- background seek buttons -->
+    <div class="bg-seek-buttons">
+        <img class="seek-button left pointer" src="assets/Pi7_seek-button.png" alt="front-button-background">
+        <img class="seek-button right pointer" src="assets/Pi7_seek-button-backwards.png" alt="back-button-background">    
+    </div>
+    
 
     <!-- settings menu -->
     <div class="settings hidden">
@@ -48,18 +55,31 @@
                     </label>
                 </div>            
             </div>
-
-            <p>12/24 Hour clock</p>
-            <div>
-                <p>hyperlinks</p>
-
+            <div id="clock-settings">
+                <p>Clock (12/24 hour)</p>
             </div>
-            <p>Widget size</p>
-            <div>
-                <p>toggle widgets</p>
-
+            <div id="links">
+                <p>Links</p>
             </div>
+            <div id="widget-settings">
+                <p>Widget size</p>
+                <p>Toggle widgets</p>
+            </div>
+            <!-- Wallpaper menu -->
             <p>Wallpaper</p>
+            <section class="bg-menu container hidden">
+                <ul id="bg-videos">
+                    <li class="pointer"><video src="assets/backgrounds/lofivideo1.mp4" loop muted></video></li>
+                    <li class="pointer"><video src="assets/backgrounds/river1.mp4" loop muted></video></li>
+            
+                    <li class="add-bg-button pointer" id="add-bg-button">
+                        <img type="plus" src="assets/inverted-plus.png" alt="plus">
+                    </li>
+                </ul>
+            </section>
+            <!-- Hidden file input for uploading background .mp4s -->
+            <input type="file" id="video-upload" accept="video/mp4" style="display: none;">
+
             <p>Theme color</p>
             <p>Dim Wallpaper</p>
             <p>Blur wallpaper</p>
@@ -74,7 +94,17 @@
         <div id="Account" class="tabcontent" style="display: none;">
             <h2>Account</h2>
             <h3 id="sign-in">Sign in / Create account</h3>
-            <h3>Autosave Preferences</h3>
+            <div id="autosave-preferences">
+                <h3>Autosave Preferences</h3>
+                <div class="asp">
+                    <input type="checkbox" id="autosave-toggle">
+                    <label for="autosave-toggle">
+                        <div class="toggle-display">
+                            <div class="toggle-circle"></div>
+                        </div>
+                    </label>
+                </div>
+            </div>
             <h3 id="save-now">Save Now</h3>
             <h3 id="retrieve-preferences">Retrieve Preferences</h3>
             <!-- <p>Support</p> -->
@@ -90,21 +120,17 @@
         </div>
     </div>
 
-
     <!-- Clock -->
     <div class="clock widget drag 12-hour" id="clockid"></div>
 
-
     <!-- tasks widget-->
     <div class="tasks widget drag" id="tasksid">
-        <!-- <h2 class="task-header"></h2> -->
+        <h2 class="task-header"></h2>
         <ul>
-            <!-- <li style="color: #ffffff">Get the day started!!! <input type="checkbox">  <span class="checkmark-box"></span> <span class="checkmark draw hidden"> </span></li> -->
-            <li style="color: #ffffff">... <input type="checkbox"> <span class="checkmark-box"></span> <span class=" checkmark draw hidden"></span></li>
-
+            <li style="color: #ffffffd3">Get the day started... <input type="checkbox">  <span class="checkmark-box"></span> <span class="checkmark draw hidden"> </span></li>
         </ul>
 
-        <input type="text" id="task-input" placeholder="add task...">
+        <input type="text" id="task-input" placeholder="add task">
         <span> <img class="addBtn" src="assets/plus.png" alt="add plus button"> </span>
     </div>
 
@@ -138,7 +164,19 @@
      </div>
 
 
-     
+     <div id="authModal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span class="close-button" id="cancelAuthButton" style="cursor: pointer;">&times;</span>
+            <h2>Account Sign In / Create</h2>
+            <div class="message-area" id="authMessage"></div>
+            <input type="text" id="authEmail" placeholder="Enter Email" name="email">
+            <input type="password" id="authPassword" placeholder="Enter Password" name="password">
+            <div class="auth-buttons">
+                <button type="button" id="signInButton">Sign In</button>
+                <button type="button" id="createAccountButton">Create Account</button>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -148,7 +186,9 @@
 
 
 
-
+    <script src="/bcrypt.min.js"></script>
+    <script type="module" src="/authentication/authmodal.js"></script>
+    <script type="module" src="/js/background.js"> </script>
     <script type="module" src="script.js"></script>
 </body>
 </html>

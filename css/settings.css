@@ -67,21 +67,15 @@
 
 
 /* Light/Dark mode */
-#light-dark-mode{
-    /* display: flex; */
-}
 #light-dark-toggle {
     display: none;
 }
 
 .light-dark-display { /* light mode widgets */
-    /* width: 100%;
-    height: 100vh; */
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background: white; */
-    transform: scale(0.215);
+    /* transform: scale(1.051); */
 }
 
 .light-dark-display label {
@@ -93,7 +87,6 @@
     cursor: pointer;
     position: relative;
     transition: 0.5s;
-
 }
 
 .circle {
@@ -128,10 +121,6 @@ svg {
     color: white;
     opacity: 0;
 }
-
-input[type=checkbox]:checked + .light-dark-display { /* changing the widgets */
-    /* background: #2C2C2F; */
-}
 input[type=checkbox]:checked + .light-dark-display label {
     background: #1F1F21;
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5) inset;
@@ -163,4 +152,89 @@ input[type=checkbox]:checked + .light-dark-display label .circle .moon {
     border-radius: 15px;
     padding: 4px 8px;
     cursor: pointer;
+}
+
+
+
+
+
+/* autosave preferences */
+#autosave-preferences {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#autosave-preferences input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none; /* Hide checkbox visually, use label for interaction */
+}
+#autosave-preferences label {
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+#autosave-preferences .toggle-display {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: #ccc;
+    transition: background-color 0.3s ease;
+}
+
+#autosave-preferences .toggle-circle {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+
+/* Styles when checkbox is checked (toggle on) */
+#autosave-preferences input[type="checkbox"]:checked + label .toggle-display {
+    background-color: #4CAF50; /* Green color when on */
+}
+
+#autosave-preferences input[type="checkbox"]:checked + label .toggle-circle {
+    transform: translateX(20px); /* Move circle to the right */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.settings p{
+    font-size: 1.075rem;
 }
